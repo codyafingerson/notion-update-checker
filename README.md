@@ -31,7 +31,7 @@ A simple script that checks for Notion updates based on the current version stor
 1. Update the `ProgramArguments` key in the [plist file](./com.codyfingerson.notionupdates.plist) to point to the correct location where you have cloned this repository.
 
 2. Move the plist file to the appropriate directory: The plist file should be placed in the `~/Library/LaunchAgents` directory for per-user agents.
-    - You can execute `mv com.codyfingerson.notionupdates.plist ~/Library/LaunchAgents/` while in the directory where you cloned this repository (e.g., if you cloned it to your Desktop, run this command in your Desktop folder).
+    - You can execute `mv com.codyfingerson.notionupdates.plist ~/Library/LaunchAgents/` while in the directory where you cloned this repository. 
 
 3. Load the plist file into `launchd` using the `launchctl` command:
     - `launchctl load ~/Library/LaunchAgents/com.codyfingerson.notionupdates.plist`
