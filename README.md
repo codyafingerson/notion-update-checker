@@ -14,10 +14,8 @@ A simple script that checks for Notion updates based on the current version stor
 ## Getting Started
 
 ### Prerequisites
-
-- [`Node.js`](https://nodejs.org/en/download/prebuilt-installer/current) installed on your system.
 - [`autopkg`](https://github.com/autopkg/autopkg) installed for packaging the new version of Notion.
-- An `autopkg` recipe for packaging Notion. (Recomended recipe repo is https://github.com/autopkg/swy-recipes)
+- An `autopkg` recipe for packaging Notion. (Recommended recipe repo is https://github.com/autopkg/swy-recipes)
 
 ### Installation
 
@@ -27,24 +25,9 @@ A simple script that checks for Notion updates based on the current version stor
     cd notion-update-checker
     ```
 
-2. Install the necessary dependencies:
-    ```sh
-    npm install
-    ```
+2. Ensure you give the bash script permission to execute by running `chmod +x ./check-notion.sh`
 
-### Usage
-
-#### Using Node
-1. Ensure you have a `version.txt` file in the root directory with the current version of Notion. Or the previous version if you would like to test this script.
-
-2. Run the script:
-    ```sh
-    node index.js
-    ```
-
-3. Follow the prompts to package the new version if available.
-
-#### Scheduling as a Process (on a Mac)
+### Scheduling as a Process (on a Mac)
 1. Update the `ProgramArguments` key in the [plist file](./com.codyfingerson.notionupdates.plist) to point to the correct location where you have cloned this repository.
 
 2. Move the plist file to the appropriate directory: The plist file should be placed in the `~/Library/LaunchAgents` directory for per-user agents.
