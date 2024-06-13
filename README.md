@@ -37,7 +37,8 @@ A simple script that checks for Notion updates based on the current version stor
     - `launchctl load ~/Library/LaunchAgents/com.codyfingerson.notionupdates.plist`
 
 4. The task should now be scheduled to run at the interval you specified. You can verify that everything worked by running:
-    - `launchctl list | grep com.codyfingerson.notionupdates`
+    - `launchctl list | grep com.codyfingerson.notionupdates`, and if successful, you should see something like `- 78	com.codyfingerson.notionupdates`, where 78 is the process id, and most likely will be different from machine to machine.
+
 
 **PLIST Quick Tips**
 - You can change the time and date that the script executes by modifying the `StartCalendarInterval` key. The hour is first, followed by the minute, and then the day of the week. The default is set to run at 9 AM, Monday through Friday.
