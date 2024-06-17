@@ -36,19 +36,26 @@ if [ -z "$newVersion" ]; then
     newVersion=$(checkVersion "${version[0]}.${version[1]}.${version[2]}")
 fi
 
+# Check if newVersion is empty
 if [ -z "$newVersion" ]; then
     echo "No new version found"
+    # osascript -e 'display alert "No new version" message "No new version of Notion was found."'
     exit 0
 fi
 
-echo "A new notion version is available: $newVersion"
+# Ask the user if they want to package it
+userResponse=$(osascript -e 'display dialog "A new Notion version is available: '"$newVersion"'. Would you like to download it and package it?" buttons {"Yes", "No"} default button "No"')
 
-read -p "Would you like to package it? (y/n): " answer
-if [ "$answer" = "y" ]; then
-    echo $newVersion > $versionFile
+# Check the user's response
+if [[ "$userResponse" == *"button returned:Yes"* ]]; then
+    echo "$newVersion" > "$versionFile"
     echo "Packaging process has started."
+    
     autopkg run -v Notion.pkg
-    echo "Packaging process has completed."
+
+    cacheDir=$(autopkg info | grep "'CACHE_DIR'" | awk -F"'" '{print $4}')
+
+    osascript -e 'display alert "Packaging status" message "Packaging process has completed. You can find the packaged file here: '"$cacheDir"'"'
 else
-    echo "Notion version $newVersion has not been downloaded."
+    osascript -e 'display alert "Notion" message "The new version of Notion was NOT downloaded or packaged."'
 fi
