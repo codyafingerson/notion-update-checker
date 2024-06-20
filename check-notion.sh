@@ -38,8 +38,7 @@ fi
 
 # Check if newVersion is empty
 if [ -z "$newVersion" ]; then
-    echo "No new version found"
-    # osascript -e 'display alert "No new version" message "No new version of Notion was found."'
+    osascript -e 'display alert "No new version" message "No new version of Notion was found."'
     exit 0
 fi
 
